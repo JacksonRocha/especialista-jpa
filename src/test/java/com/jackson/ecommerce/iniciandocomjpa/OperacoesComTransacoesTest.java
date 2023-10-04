@@ -29,7 +29,7 @@ public class OperacoesComTransacoesTest extends EntityManagerTest {
     public void mostrarDiferencaPersistMerge() {
         Produto produtoPersist = new Produto();
 
-        produtoPersist.setId(5);
+        //produtoPersist.setId(5); //Estamos usando o IDENTITY na entidade
         produtoPersist.setNome("Smartphone One Plus");
         produtoPersist.setDescricao("O processador mais rápido");
         produtoPersist.setPreco(new BigDecimal(2000));
@@ -48,7 +48,7 @@ public class OperacoesComTransacoesTest extends EntityManagerTest {
 
         Produto produtoMerge = new Produto();
 
-        produtoMerge.setId(6);
+        //produtoMerge.setId(6); //Estamos usando o IDENTITY na entidade
         produtoMerge.setNome("Notebook Dell");
         produtoMerge.setDescricao("O melhor da categoria");
         produtoMerge.setPreco(new BigDecimal(2000));
@@ -68,13 +68,13 @@ public class OperacoesComTransacoesTest extends EntityManagerTest {
     public void inserirObjetoComMerge() {
         Produto produto = new Produto();
 
-        produto.setId(4);
+        //produto.setId(4); //Estamos usando o IDENTITY na entidade
         produto.setNome("Microfone Rode Videmic");
         produto.setDescricao("A melhor qualidade de som");
         produto.setPreco(new BigDecimal(1000));
 
         entityManager.getTransaction().begin();
-        entityManager.merge(produto);
+        produto = entityManager.merge(produto);
         entityManager.getTransaction().commit();
 
         entityManager.clear();
@@ -87,13 +87,13 @@ public class OperacoesComTransacoesTest extends EntityManagerTest {
     public void atualizarObjeto() {
         Produto produto = new Produto();
 
-        produto.setId(1);
+        //produto.setId(1); //Estamos usando o IDENTITY na entidade
         produto.setNome("Kindle Paperwhite");
         produto.setDescricao("Conheça o novo Kindle");
         produto.setPreco(new BigDecimal(599));
 
         entityManager.getTransaction().begin();;
-        entityManager.merge(produto);
+        produto = entityManager.merge(produto);
         entityManager.getTransaction().commit();
 
         entityManager.clear();
@@ -138,7 +138,7 @@ public class OperacoesComTransacoesTest extends EntityManagerTest {
     public void inserirOPrimeiroObjeto() {
         Produto produto = new Produto();
 
-        produto.setId(2);
+        //produto.setId(2); //Estamos usando o IDENTITY na entidade
         produto.setNome("Camera Canon");
         produto.setDescricao("A melhor definição para suas fotos");
         produto.setPreco(new BigDecimal(5000));
