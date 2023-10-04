@@ -24,5 +24,5 @@ public class Produto {
     private BigDecimal preco;
 
     @OneToMany(mappedBy = "produto")
-    private List<ItemPedido> itemPedido;
+    private List<ItemPedido> itensProduto;
 }
