@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.List;
+
 @Data
 @Entity
 @Table(name = "cliente")
@@ -18,4 +20,7 @@ public class Cliente {
 
     @Enumerated(EnumType.STRING)
     private SexoCliente sexo;
+
+    @OneToMany(mappedBy = "cliente")
+    private List<Pedido> pedidos;
 }
