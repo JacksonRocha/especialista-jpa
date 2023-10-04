@@ -11,11 +11,11 @@ public class PrimeiroCrudTest extends EntityManagerTest {
     public void criandoCliente() {
         Cliente cliente = new Cliente();
 
-        cliente.setId(3);
+        //cliente.setId(3); //Estamos usando o IDENTITY na entidade
         cliente.setNome("Jackson Lucas");
 
         entityManager.getTransaction().begin();
-        entityManager.merge(cliente);
+        cliente = entityManager.merge(cliente);
         entityManager.getTransaction().commit();
 
         entityManager.clear();
