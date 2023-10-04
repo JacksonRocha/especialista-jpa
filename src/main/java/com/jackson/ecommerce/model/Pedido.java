@@ -28,7 +28,7 @@ public class Pedido {
     @Column(name = "data_conclusao")
     private LocalDateTime dataConclusao;
 
-    @Column(name = "nota_fiscal_id")
+    @Column(name = "nota_fiscal_idd")
     private Integer notaFiscalId;
 
     private BigDecimal total;
