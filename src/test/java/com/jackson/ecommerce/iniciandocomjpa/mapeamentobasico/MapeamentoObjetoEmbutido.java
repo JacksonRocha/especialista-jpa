@@ -26,7 +26,7 @@ public class MapeamentoObjetoEmbutido extends EntityManagerTest {
         endereco.setEstado("DF");
 
         Pedido pedido = new Pedido();
-        pedido.setId(1);
+        //pedido.setId(1); //Estamos usando o IDENTITY na entidade
         pedido.setDataPedido(LocalDateTime.now());
         pedido.setStatus(StatusPedido.AGUARDANDO);
         pedido.setTotal(new BigDecimal(1000));
