@@ -23,7 +23,7 @@ public class MapeamentoObjetoEmbutido extends EntityManagerTest {
         endereco.setComplemento("Chacara 25");
         endereco.setBairro("Taguatinga-Sul");
         endereco.setCidade("Brasilia");
-        endereco.setEstado("DF2");
+        endereco.setEstado("DF");
 
         Pedido pedido = new Pedido();
         pedido.setId(1);
