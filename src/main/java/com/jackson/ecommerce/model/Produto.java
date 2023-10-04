@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 @Entity
@@ -21,4 +22,7 @@ public class Produto {
     private String descricao;
 
     private BigDecimal preco;
+
+    @OneToMany(mappedBy = "produto")
+    private List<ItemPedido> itemPedido;
 }
