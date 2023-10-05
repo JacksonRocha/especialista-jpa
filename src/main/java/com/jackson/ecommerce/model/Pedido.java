@@ -1,5 +1,6 @@
 package com.jackson.ecommerce.model;
 
+import com.jackson.ecommerce.listener.GerarNotaFiscalListener;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -9,6 +10,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
+@EntityListeners({GerarNotaFiscalListener.class})
 @Entity
 @Table(name = "pedido")
 public class Pedido {
@@ -47,6 +49,10 @@ public class Pedido {
 
     @Embedded
     private EnderecoEntregaPedido enderecoEntrega;
+
+    public  boolean isPago() {
+        return StatusPedido.PAGO.equals(status);
+    }
 
 //    @PrePersist
 //    @PreUpdate
