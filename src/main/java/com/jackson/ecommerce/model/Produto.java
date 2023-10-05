@@ -1,5 +1,7 @@
 package com.jackson.ecommerce.model;
 
+import com.jackson.ecommerce.listener.GenericoListener;
+import com.jackson.ecommerce.listener.GerarNotaFiscalListener;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -8,6 +10,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Data
+@EntityListeners({ GenericoListener.class})
 @Entity
 @Table(name = "produto")
 public class Produto {
