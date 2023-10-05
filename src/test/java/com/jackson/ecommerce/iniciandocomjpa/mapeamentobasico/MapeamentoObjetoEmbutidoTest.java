@@ -1,6 +1,7 @@
 package com.jackson.ecommerce.iniciandocomjpa.mapeamentobasico;
 
 import com.jackson.ecommerce.EntityManagerTest;
+import com.jackson.ecommerce.model.Cliente;
 import com.jackson.ecommerce.model.EnderecoEntregaPedido;
 import com.jackson.ecommerce.model.Pedido;
 import com.jackson.ecommerce.model.StatusPedido;
@@ -10,11 +11,12 @@ import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public class MapeamentoObjetoEmbutido extends EntityManagerTest {
+public class MapeamentoObjetoEmbutidoTest extends EntityManagerTest {
 
 
     @Test
     public void analisarMapeamentoObjetoEmbutido() {
+        Cliente cliente = entityManager.find(Cliente.class, 1);
 
         EnderecoEntregaPedido endereco = new EnderecoEntregaPedido();
         endereco.setCep("72210-082");
@@ -31,6 +33,7 @@ public class MapeamentoObjetoEmbutido extends EntityManagerTest {
         pedido.setStatus(StatusPedido.AGUARDANDO);
         pedido.setTotal(new BigDecimal(1000));
         pedido.setEnderecoEntrega(endereco);
+        pedido.setCliente(cliente);
 
         entityManager.getTransaction().begin();
         entityManager.persist(pedido);
