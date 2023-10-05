@@ -54,7 +54,7 @@ public class RelacionamentosOneToManyTest extends EntityManagerTest {
         entityManager.clear();
 
         Pedido pedidoVerificacao = entityManager.find(Pedido.class, pedido.getId());
-        Assertions.assertFalse(pedidoVerificacao.getItensPedido().isEmpty());
+        Assertions.assertFalse(pedidoVerificacao.getItens().isEmpty());
     }
 
 }
