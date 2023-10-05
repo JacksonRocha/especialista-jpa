@@ -3,11 +3,18 @@ package com.jackson.ecommerce.conhecendoentitymanager;
 import com.jackson.ecommerce.EntityManagerTest;
 import com.jackson.ecommerce.model.Cliente;
 import com.jackson.ecommerce.model.Pedido;
+import com.jackson.ecommerce.model.Produto;
 import com.jackson.ecommerce.model.StatusPedido;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class ListenersTest extends EntityManagerTest {
+
+    @Test
+    public void carregarEntidades() {
+        Produto produto = entityManager.find(Produto.class, 1);
+        Pedido pedido = entityManager.find(Pedido.class, 1);
+    }
 
     @Test
     public void acionarCallbacks() {
