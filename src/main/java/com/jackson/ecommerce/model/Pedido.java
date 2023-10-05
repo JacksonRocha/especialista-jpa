@@ -1,5 +1,6 @@
 package com.jackson.ecommerce.model;
 
+import com.jackson.ecommerce.listener.GenericoListener;
 import com.jackson.ecommerce.listener.GerarNotaFiscalListener;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -10,7 +11,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
-@EntityListeners({GerarNotaFiscalListener.class})
+@EntityListeners({GerarNotaFiscalListener.class, GenericoListener.class})
 @Entity
 @Table(name = "pedido")
 public class Pedido {
