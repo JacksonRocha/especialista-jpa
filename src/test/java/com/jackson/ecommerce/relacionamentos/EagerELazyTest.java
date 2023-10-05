@@ -9,9 +9,5 @@ public class EagerELazyTest extends EntityManagerTest {
     @Test
     public void verificarComportamento() {
         Pedido pedido = entityManager.find(Pedido.class, 1);
-
-        pedido.getItens().isEmpty();
-
-
     }
 }
