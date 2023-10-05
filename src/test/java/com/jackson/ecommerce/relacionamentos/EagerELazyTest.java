@@ -11,5 +11,7 @@ public class EagerELazyTest extends EntityManagerTest {
         Pedido pedido = entityManager.find(Pedido.class, 1);
 
         pedido.getItens().isEmpty();
+
+
     }
 }
