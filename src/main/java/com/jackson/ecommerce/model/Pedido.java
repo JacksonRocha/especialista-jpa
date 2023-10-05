@@ -43,7 +43,7 @@ public class Pedido {
     private EnderecoEntregaPedido enderecoEntrega;
 
     @OneToMany(mappedBy = "pedido")
-    private List<ItemPedido> itensPedido;
+    private List<ItemPedido> itens;
 
 
 }
