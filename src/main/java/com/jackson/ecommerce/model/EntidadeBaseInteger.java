@@ -15,4 +15,5 @@ public class EntidadeBaseInteger {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
 }
