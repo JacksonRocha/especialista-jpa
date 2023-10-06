@@ -13,18 +13,13 @@ import java.util.Map;
 @SecondaryTable(name = "cliente_detalhe", pkJoinColumns = @PrimaryKeyJoinColumn(name = "cliente_id"))
 @Entity
 @Table(name = "cliente")
-public class Cliente {
-
-    @EqualsAndHashCode.Include
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class Cliente extends EntidadeBaseInteger{
 
     private String nome;
 
     @ElementCollection
     @CollectionTable(name = "cliente_contato",
-    joinColumns = @JoinColumn(name = "cliente_id"))
+            joinColumns = @JoinColumn(name = "cliente_id"))
     @MapKeyColumn(name = "tipo")
     @Column(name = "descricao")
     private Map<String, String> contatos;
