@@ -33,6 +33,10 @@ public class Produto {
 
     private BigDecimal preco;
 
+    @Lob
+    @Column(length = 1000)
+    private byte[] foto;
+
     @ManyToMany
     @JoinTable(name = "produto_categoria",
             joinColumns = @JoinColumn(name = "produto_id"),
@@ -52,4 +56,5 @@ public class Produto {
     @CollectionTable(name = "produto_atributo",
     joinColumns = @JoinColumn(name = "produto_id"))
     private List<Atributo> atributos;
+
 }
