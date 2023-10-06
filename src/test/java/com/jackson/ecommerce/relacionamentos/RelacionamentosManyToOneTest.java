@@ -17,8 +17,9 @@ public class RelacionamentosManyToOneTest extends EntityManagerTest {
         Pedido pedido = new Pedido();
         pedido.setStatus(StatusPedido.AGUARDANDO);
         pedido.setDataCriacao(LocalDateTime.now());
-        pedido.setCliente(cliente);
         pedido.setTotal(new BigDecimal(10));
+
+        pedido.setCliente(cliente);
 
         entityManager.getTransaction().begin();
         entityManager.persist(pedido);
@@ -45,21 +46,17 @@ public class RelacionamentosManyToOneTest extends EntityManagerTest {
 
         entityManager.persist(pedido);
 
-        // Pode ser que logo ao executar o método "persist" o JPA já faça a sincronização com a base.
-        // Mas caso isso não aconteça, o flush garante a sincronização.
-        entityManager.flush();
-
         ItemPedido itemPedido = new ItemPedido();
 //        itemPedido.setPedidoId(pedido.getId()); IdClass
 //        itemPedido.setProdutoId(produto.getId()); IdClass
-        itemPedido.setId(new ItemPedidoId(pedido.getId(), produto.getId()));
+        itemPedido.setId(new ItemPedidoId());
         itemPedido.setPrecoProduto(produto.getPreco());
         itemPedido.setQuantidade(1);
         itemPedido.setPedido(pedido);
         itemPedido.setProduto(produto);
 
+        entityManager.persist(pedido);
         entityManager.persist(itemPedido);
-
         entityManager.getTransaction().commit();
 
         entityManager.clear();
