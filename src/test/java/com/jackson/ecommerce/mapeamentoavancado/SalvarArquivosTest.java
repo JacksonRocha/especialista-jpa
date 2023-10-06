@@ -4,6 +4,7 @@ import com.jackson.ecommerce.EntityManagerTest;
 import com.jackson.ecommerce.model.Cliente;
 import com.jackson.ecommerce.model.NotaFiscal;
 import com.jackson.ecommerce.model.Pedido;
+import com.jackson.ecommerce.model.Produto;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -15,6 +16,20 @@ import java.nio.file.Paths;
 import java.util.Date;
 
 public class SalvarArquivosTest extends EntityManagerTest {
+
+    @Test
+    public void salvarFotoProduto() {
+        entityManager.getTransaction().begin();
+        Produto produto = entityManager.find(Produto.class, 1);
+        produto.setFoto(carregarFoto());
+        entityManager.getTransaction().commit();
+
+        entityManager.clear();
+
+        Produto produtoVerificacao = entityManager.find(Produto.class, 1);
+        Assertions.assertNotNull(produtoVerificacao.getFoto());
+        Assertions.assertTrue(produtoVerificacao.getFoto().length > 0);
+    }
 
     @Test
     public void salvarXmlNota() {
@@ -49,12 +64,21 @@ public class SalvarArquivosTest extends EntityManagerTest {
 
     }
 
+    private static byte[] carregarFoto() {
+        return carregarArquivo("/kindle.jpg");
+    }
+
     private static byte[] carregarNotaFiscal() {
+        return carregarArquivo("/nota-fiscal.xml");
+    }
+
+    private static byte[] carregarArquivo(String nome) {
         try {
             return SalvarArquivosTest.class.getResourceAsStream(
-                    "/nota-fiscal.xml").readAllBytes();
+                    nome).readAllBytes();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
+
 }
