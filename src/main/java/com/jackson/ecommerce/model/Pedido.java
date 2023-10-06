@@ -4,7 +4,6 @@ import com.jackson.ecommerce.listener.GenericoListener;
 import com.jackson.ecommerce.listener.GerarNotaFiscalListener;
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -41,7 +40,7 @@ public class Pedido extends EntidadeBaseInteger{
     private StatusPedido status;
 
     @OneToOne(mappedBy = "pedido")
-    private PagamentoCartao pagamento;
+    private Pagamento pagamento;
 
     @Embedded
     private EnderecoEntregaPedido enderecoEntrega;
