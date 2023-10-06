@@ -2,11 +2,8 @@ package com.jackson.ecommerce.mapeamentoavancado;
 
 import com.jackson.ecommerce.EntityManagerTest;
 import com.jackson.ecommerce.model.Cliente;
-import com.jackson.ecommerce.model.SexoCliente;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.time.LocalDate;
 
 public class HerancaTest extends EntityManagerTest {
 
