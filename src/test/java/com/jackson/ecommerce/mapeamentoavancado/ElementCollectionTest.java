@@ -1,6 +1,7 @@
 package com.jackson.ecommerce.mapeamentoavancado;
 
 import com.jackson.ecommerce.EntityManagerTest;
+import com.jackson.ecommerce.model.Atributo;
 import com.jackson.ecommerce.model.Cliente;
 import com.jackson.ecommerce.model.Produto;
 import org.junit.jupiter.api.Assertions;
@@ -23,5 +24,20 @@ public class ElementCollectionTest extends EntityManagerTest {
 
         Produto produtoVerificacao = entityManager.find(Produto.class, produto.getId());
         Assertions.assertFalse(produtoVerificacao.getTags().isEmpty());
+    }
+
+    @Test
+    public void aplicarAtributos() {
+        entityManager.getTransaction().begin();
+
+        Produto produto = entityManager.find(Produto.class, 1);
+        produto.setAtributos(Arrays.asList(new Atributo("tela", "1080x1240")));
+
+        entityManager.getTransaction().commit();
+
+        entityManager.clear();
+
+        Produto produtoVerificacao = entityManager.find(Produto.class, produto.getId());
+        Assertions.assertFalse(produtoVerificacao.getAtributos().isEmpty());
     }
 }
