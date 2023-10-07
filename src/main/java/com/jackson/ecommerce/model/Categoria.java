@@ -12,6 +12,7 @@ import java.util.List;
         uniqueConstraints = { @UniqueConstraint(name = "unq_nome", columnNames = {"nome"})})
 public class Categoria extends EntidadeBaseInteger {
 
+    @Column(length = 100, nullable = false) // varchar(100) not null
     private String nome;
 
     @ManyToOne
