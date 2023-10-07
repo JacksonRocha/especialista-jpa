@@ -9,6 +9,6 @@ import lombok.EqualsAndHashCode;
 @Entity
 public class PagamentoBoleto extends Pagamento{
 
-    @Column(name = "codigo_barras")
+    @Column(name = "codigo_barras", length = 100, nullable = false)
     private String codigoBarras;
 }
