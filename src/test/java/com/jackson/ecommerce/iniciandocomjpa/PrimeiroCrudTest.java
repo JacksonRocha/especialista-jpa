@@ -2,6 +2,7 @@ package com.jackson.ecommerce.iniciandocomjpa;
 
 import com.jackson.ecommerce.EntityManagerTest;
 import com.jackson.ecommerce.model.Cliente;
+import com.jackson.ecommerce.model.SexoCliente;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -13,6 +14,9 @@ public class PrimeiroCrudTest extends EntityManagerTest {
 
         //cliente.setId(3); //Estamos usando o IDENTITY na entidade
         cliente.setNome("Jackson Lucas");
+        cliente.setSexo(SexoCliente.MASCULINO);
+        cliente.setCpf("4444");
+
 
         entityManager.getTransaction().begin();
         cliente = entityManager.merge(cliente);
@@ -40,6 +44,8 @@ public class PrimeiroCrudTest extends EntityManagerTest {
         entityManager.getTransaction().begin();
         cliente = entityManager.merge(cliente);
         cliente.setNome("Lucas Batista");
+        cliente.setCpf("01422222160");
+        cliente.setSexo(SexoCliente.MASCULINO);
         entityManager.getTransaction().commit();
 
         entityManager.clear();
