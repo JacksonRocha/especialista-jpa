@@ -117,6 +117,6 @@ public class CascadePersistTest extends EntityManagerTest {
         entityManager.clear();
 
         Cliente clienteVerificacao = entityManager.find(Cliente.class, cliente.getId());
-        Assertions.assertNotNull(cliente);
+        Assertions.assertNotNull(clienteVerificacao);
     }
 }
