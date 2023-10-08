@@ -4,6 +4,7 @@ import com.jackson.ecommerce.EntityManagerTest;
 import com.jackson.ecommerce.model.Atributo;
 import com.jackson.ecommerce.model.Cliente;
 import com.jackson.ecommerce.model.Produto;
+import com.jackson.ecommerce.model.SexoCliente;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -49,6 +50,7 @@ public class ElementCollectionTest extends EntityManagerTest {
 
         Cliente cliente = entityManager.find(Cliente.class, 1);
         cliente.setContatos(Collections.singletonMap("email", "fernando@email.com"));
+        cliente.setSexo(SexoCliente.MASCULINO);
 
         entityManager.getTransaction().commit();
 
@@ -57,5 +59,4 @@ public class ElementCollectionTest extends EntityManagerTest {
         Cliente clienteVerificacao = entityManager.find(Cliente.class, cliente.getId());
         Assertions.assertEquals("fernando@email.com",clienteVerificacao.getContatos().get("email"));
     }
-
 }
