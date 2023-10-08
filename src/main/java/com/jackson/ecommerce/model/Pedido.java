@@ -20,7 +20,7 @@ public class Pedido extends EntidadeBaseInteger{
             foreignKey = @ForeignKey(name = "fk_pedido_cliente"))
     private Cliente cliente;
 
-    @OneToMany(mappedBy = "pedido")
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.MERGE)
     private List<ItemPedido> itens;
 
     @Column(name = "data_criacao", updatable = false, nullable = false)
@@ -56,8 +56,11 @@ public class Pedido extends EntidadeBaseInteger{
 //    @PreUpdate
     public void calcularTotal() {
         if (itens != null) {
-            total = itens.stream().map(ItemPedido::getPrecoProduto)
+            total = itens.stream().map(
+                    i -> new BigDecimal(i.getQuantidade()).multiply(i.getPrecoProduto()))
                     .reduce(BigDecimal.ZERO, BigDecimal::add);
+        }else {
+            total = BigDecimal.ZERO;
         }
     }
 
