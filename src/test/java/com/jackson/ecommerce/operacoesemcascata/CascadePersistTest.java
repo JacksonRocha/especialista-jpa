@@ -12,7 +12,31 @@ import java.util.Arrays;
 
 public class CascadePersistTest extends EntityManagerTest {
 
-   //  @Test
+     @Test
+    public void persistirProdutoComCategoria() {
+        Produto produto = new Produto();
+        produto.setDataCriacao(LocalDateTime.now());
+        produto.setPreco(BigDecimal.TEN);
+        produto.setNome("Fones de Ouvido");
+        produto.setDescricao("A melhor qualidade de som");
+
+        Categoria categoria = new Categoria();
+        categoria.setNome("Áudio");
+
+        produto.setCategorias(Arrays.asList(categoria)); // CascadeType.PERSIST
+
+        entityManager.getTransaction().begin();
+        entityManager.persist(produto);
+        entityManager.getTransaction().commit();
+
+        entityManager.clear();
+
+        Categoria categoriaVerificacao = entityManager.find(Categoria.class, categoria.getId());
+        Assertions.assertNotNull(categoriaVerificacao);
+    }
+
+
+    //  @Test
     public void persistirPedidoComItens() {
         Cliente cliente = entityManager.find(Cliente.class, 1);
         Produto produto = entityManager.find(Produto.class, 1);
