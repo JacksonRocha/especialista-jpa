@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 
-public class CascadePersistTest extends EntityManagerTest {
+public class CascadeTypePersistTest extends EntityManagerTest {
 
     // @Test
     public void persistirProdutoComCategoria() {
