@@ -5,6 +5,7 @@ import com.jackson.ecommerce.listener.GerarNotaFiscalListener;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.hibernate.Length;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -27,7 +28,8 @@ public class Produto extends EntidadeBaseInteger{
     @Column(name = "nome", length = 100, nullable = false ) // nome varchar(100) not null
     private String nome;
 
-    @Column(columnDefinition = "varchar(275) default 'descricao'")
+    @Lob
+    @Column(length = Length.LONG32)
     private String descricao;
 
     private BigDecimal preco;
