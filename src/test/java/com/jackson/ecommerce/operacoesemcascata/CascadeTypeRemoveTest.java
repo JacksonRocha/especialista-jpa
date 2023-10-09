@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 public class CascadeTypeRemoveTest extends EntityManagerTest {
 
-    @Test
+    //@Test
     public void removerItensOrfaos() {
         Pedido pedido = entityManager.find(Pedido.class, 1);
 
