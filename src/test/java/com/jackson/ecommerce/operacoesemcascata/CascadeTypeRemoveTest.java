@@ -4,10 +4,27 @@ import com.jackson.ecommerce.EntityManagerTest;
 import com.jackson.ecommerce.model.ItemPedido;
 import com.jackson.ecommerce.model.ItemPedidoId;
 import com.jackson.ecommerce.model.Pedido;
+import com.jackson.ecommerce.model.Produto;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class CascadeTypeRemoveTest extends EntityManagerTest {
+
+    @Test
+    public void removerRelacaoProdutoCategoria() {
+        Produto produto = entityManager.find(Produto.class, 1);
+
+        Assertions.assertFalse(produto.getCategorias().isEmpty());
+
+        entityManager.getTransaction().begin();
+        produto.getCategorias().clear();
+        entityManager.getTransaction().commit();
+
+        entityManager.clear();
+
+        Produto produtoVerificacao = entityManager.find(Produto.class, produto.getId());
+        Assertions.assertTrue(produtoVerificacao.getCategorias().isEmpty());
+    }
 
     //@Test
     public void removerPedidoEItens() {
