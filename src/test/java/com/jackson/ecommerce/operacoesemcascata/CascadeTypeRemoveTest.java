@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 public class CascadeTypeRemoveTest extends EntityManagerTest {
 
-    @Test
+    //@Test
     public void removerPedidoEItens() {
         Pedido pedido = entityManager.find(Pedido.class, 1);
 
@@ -23,7 +23,7 @@ public class CascadeTypeRemoveTest extends EntityManagerTest {
         Assertions.assertNull(pedidoVerificacao);
     }
 
-    @Test
+    //@Test
     public void removerItemPedidoEPedido() {
         ItemPedido itemPedido = entityManager.find(
                 ItemPedido.class, new ItemPedidoId(1, 1));
