@@ -23,7 +23,7 @@ public class CascadeTypeRemoveTest extends EntityManagerTest {
         Assertions.assertNull(pedidoVerificacao);
     }
 
-    // @Test
+    @Test
     public void removerItemPedidoEPedido() {
         ItemPedido itemPedido = entityManager.find(
                 ItemPedido.class, new ItemPedidoId(1, 1));
