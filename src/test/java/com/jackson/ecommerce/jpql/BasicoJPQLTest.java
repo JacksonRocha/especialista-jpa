@@ -1,17 +1,43 @@
 package com.jackson.ecommerce.jpql;
 
 import com.jackson.ecommerce.EntityManagerTest;
+import com.jackson.ecommerce.dto.ProdutoDTO;
 import com.jackson.ecommerce.model.Cliente;
 import com.jackson.ecommerce.model.Pedido;
-import com.jackson.ecommerce.model.Produto;
 import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
 public class BasicoJPQLTest extends EntityManagerTest {
+
+    @Test
+    public void prejetarNoDTO() {
+        String jpql = "select new com.jackson.ecommerce.dto.ProdutoDTO(id, nome) from Produto";
+
+        TypedQuery<ProdutoDTO> typedQuery = entityManager.createQuery(jpql, ProdutoDTO.class);
+        List<ProdutoDTO> lista = typedQuery.getResultList();
+
+        Assertions.assertFalse(lista.isEmpty());
+        lista.forEach(p -> System.out.println(p.getId() + ", " + p.getNome()));
+    }
+
+
+    @Test
+    public void projetarOResultado() {
+        String jpql = "select id, nome from Produto";
+
+        TypedQuery<Object[]> typedQuery = entityManager.createQuery(jpql, Object[].class);
+
+        List<Object[]> lista = typedQuery.getResultList();
+
+        Assertions.assertTrue(lista.get(0).length == 2);
+
+        lista.forEach(arr -> System.out.println(arr[0] + ", " + arr[1]));
+    }
 
     @Test
     public void selecionarUmAtributoParaRetorno() {
