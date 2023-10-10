@@ -1,7 +1,7 @@
 package com.jackson.ecommerce.listener;
 
 import com.jackson.ecommerce.model.Pedido;
-import com.jackson.ecommerce.serive.NotaFiscalService;
+import com.jackson.ecommerce.service.NotaFiscalService;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 
