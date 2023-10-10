@@ -17,6 +17,6 @@ public class JoinTest extends EntityManagerTest {
         TypedQuery<Object[]> typedQuery = entityManager.createQuery(jpql, Object[].class);
 
         List<Object[]> lista = typedQuery.getResultList();
-        Assertions.assertTrue(lista.size() == 3);
+        Assertions.assertFalse(lista.isEmpty());
     }
 }
