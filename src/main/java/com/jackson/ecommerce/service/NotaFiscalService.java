@@ -1,4 +1,4 @@
-package com.jackson.ecommerce.serive;
+package com.jackson.ecommerce.service;
 
 import com.jackson.ecommerce.model.Pedido;
 
