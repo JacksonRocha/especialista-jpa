@@ -1,15 +1,28 @@
 package com.jackson.ecommerce.jpql;
 
 import com.jackson.ecommerce.EntityManagerTest;
+import com.jackson.ecommerce.model.Pedido;
 import com.jackson.ecommerce.model.Produto;
 import jakarta.persistence.TypedQuery;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class ExpressoesCondicionaisTest extends EntityManagerTest {
+
+    @Test
+    public void usarMaiorMenorComDatas() {
+        String jpql = "select p from Pedido p where p.dataCriacao > :data";
+
+        TypedQuery<Pedido> typedQuery = entityManager.createQuery(jpql, Pedido.class);
+        typedQuery.setParameter("data", LocalDateTime.now().minusDays(2));
+
+        List<Pedido> lista = typedQuery.getResultList();
+        Assertions.assertFalse(lista.isEmpty());
+    }
 
     @Test
     public void usarMaiorMenor() {
