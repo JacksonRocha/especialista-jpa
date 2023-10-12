@@ -18,7 +18,12 @@ insert into pagamento (pedido_id, status, tipo_pagamento, numero_cartao, codigo_
 
 insert into nota_fiscal (pedido_id, xml, data_emissao) VALUES (2, '<xml />', sysdate());
 
-insert into categoria (id, nome) values (1, 'Eletrodomesticos');
-insert into categoria (id, nome) values (2, 'Livros');
+insert into categoria (nome) values ('Eletrodomésticos');
+insert into categoria (nome) values ('Livros');
+insert into categoria (nome) values ('Esportes');
+insert into categoria (nome) values ('Futebol');
+insert into categoria (nome) values ('Natação');
+insert into categoria (nome) values ('Notebooks');
+insert into categoria (nome) values ('Smartphones');
 
 insert into produto_categoria (produto_id, categoria_id) VALUES (1, 2);
