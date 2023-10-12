@@ -1,13 +1,29 @@
 package com.jackson.ecommerce.jpql;
 
 import com.jackson.ecommerce.EntityManagerTest;
+import com.jackson.ecommerce.model.Produto;
 import jakarta.persistence.TypedQuery;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class ExpressoesCondicionaisTest extends EntityManagerTest {
+
+    @Test
+    public void usarMaiorMenor() {
+        String jpql = "select p from Produto p " +
+                " where p.preco >= :precoInicial and p.preco <= :precoFinal";
+
+        TypedQuery<Produto> typedQuery = entityManager.createQuery(jpql, Produto.class);
+        typedQuery.setParameter("precoInicial", new BigDecimal(400));
+        typedQuery.setParameter("precoFinal", new BigDecimal(1500));
+
+        List<Produto> lista = typedQuery.getResultList();
+        Assertions.assertFalse(lista.isEmpty());
+    }
+
 
     @Test
     public void usarIsNull() {
