@@ -15,11 +15,11 @@ public class PassandoParametrosTest extends EntityManagerTest {
     @Test
     public void passarParametro() {
         String jpql = "select p from Pedido p join p.pagamento pag " +
-                " where p.id = :pedidoId and pag.status = :pagamentoStatus ";
+                " where p.id = :pedidoId and pag.status = ?1";
 
         TypedQuery<Pedido> typedQuery = entityManager.createQuery(jpql, Pedido.class);
         typedQuery.setParameter("pedidoId", 2);
-        typedQuery.setParameter("pagamentoStatus",StatusPagamento.PROCESSANDO);
+        typedQuery.setParameter(1,StatusPagamento.PROCESSANDO);
 
         List<Pedido> lista = typedQuery.getResultList();
         Assertions.assertTrue(lista.size() == 1);
