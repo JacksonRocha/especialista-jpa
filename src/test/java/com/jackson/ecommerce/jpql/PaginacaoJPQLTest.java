@@ -14,6 +14,19 @@ import java.util.List;
 
 public class PaginacaoJPQLTest extends EntityManagerTest {
 
+    @Test
+    public void aplicarFuncaoNativas() {
+        String jpql = "select function('dayname', p.dataCriacao) from Pedido p " +
+                " where function('acima_media_faturamento', p.total) = 1";
+
+        TypedQuery<String> typedQuery = entityManager.createQuery(jpql, String.class);
+
+        List<String> lista = typedQuery.getResultList();
+        Assertions.assertFalse(lista.isEmpty());
+
+        lista.forEach(obj -> System.out.println(obj));
+    }
+
 
     @Test
     public void paginarResultados() {
