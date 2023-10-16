@@ -9,4 +9,14 @@
         <query>select p from Pedido p</query>
     </named-query>
 
+    <named-query name="Pedido.todos">
+        <query>select p from Pedido p</query>
+    </named-query>
+
+    <named-query name="Produto.todos">
+        <query>select p from Produto p</query>
+    </named-query>
+
+
+
 </entity-mappings>
