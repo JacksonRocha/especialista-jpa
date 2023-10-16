@@ -16,6 +16,18 @@ import java.util.stream.Collectors;
 public class OperacoesEmLoteTest extends EntityManagerTest {
 
     @Test
+    public void removerEmLote() {
+        entityManager.getTransaction().begin();
+
+        String jpql = "delete from Produto p where p.id between 8 and 12";
+
+        Query query = entityManager.createQuery(jpql);
+        query.executeUpdate();
+
+        entityManager.getTransaction().commit();
+    }
+
+    @Test
     public void atualizarEmLote() {
         entityManager.getTransaction().begin();
 
