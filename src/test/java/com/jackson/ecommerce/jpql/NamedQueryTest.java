@@ -12,6 +12,17 @@ import java.util.List;
 public class NamedQueryTest extends EntityManagerTest {
 
     @Test
+    public void executarConsultaArquivoXMLEspecificoProduto() {
+        TypedQuery<Pedido> typedQuery = entityManager
+                .createNamedQuery("Pedido.listar", Pedido.class);
+
+        List<Pedido> lista = typedQuery.getResultList();
+
+        Assertions.assertFalse(lista.isEmpty());
+    }
+
+
+    @Test
     public void executarConsulta() {
         TypedQuery<Produto> typedQuery = entityManager
                 .createNamedQuery("Produto.listarPorCategoria", Produto.class);
