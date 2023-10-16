@@ -17,6 +17,10 @@
         <query>select p from Produto p</query>
     </named-query>
 
+    <named-query name="Categoria.listar">
+        <query>select c from Categoria c</query>
+    </named-query>
+
 
 
 </entity-mappings>
