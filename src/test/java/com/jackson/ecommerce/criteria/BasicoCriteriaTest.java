@@ -1,6 +1,7 @@
 package com.jackson.ecommerce.criteria;
 
 import com.jackson.ecommerce.EntityManagerTest;
+import com.jackson.ecommerce.dto.ProdutoDTO;
 import com.jackson.ecommerce.model.Pedido;
 import com.jackson.ecommerce.model.Produto;
 import jakarta.persistence.Tuple;
@@ -15,6 +16,23 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public class BasicoCriteriaTest extends EntityManagerTest {
+
+    @Test
+    public void projetarOResultadoDTO() {
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<ProdutoDTO> criteriaQuery = criteriaBuilder.createQuery(ProdutoDTO.class);
+        Root<Produto> root = criteriaQuery.from(Produto.class);
+
+        criteriaQuery.select(criteriaBuilder
+                .construct(ProdutoDTO.class, root.get("id"), root.get("nome")));
+
+        TypedQuery<ProdutoDTO> typedQuery = entityManager.createQuery(criteriaQuery);
+        List<ProdutoDTO> lista = typedQuery.getResultList();
+        Assertions.assertFalse(lista.isEmpty());
+
+        lista.forEach(dto -> System.out.println("ID: " + dto.getId() + ", Nome " + dto.getNome()));
+    }
+
 
     @Test
     public void projetarOResultadoTuple() {
