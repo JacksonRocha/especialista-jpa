@@ -30,7 +30,6 @@ public class JoinCriteriaTest extends EntityManagerTest {
         TypedQuery<Pedido> typedQuery = entityManager.createQuery(criteriaQuery);
         List<Pedido> lista = typedQuery.getResultList();
         Assertions.assertTrue(lista.size() == 2);
-
     }
 
 
